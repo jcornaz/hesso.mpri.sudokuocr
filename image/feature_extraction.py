@@ -30,10 +30,10 @@ def load_data(path):
     labels = [int(im_name.split('/')[-1][0]) for im_name in im_list]
 
     # Create features from the images
-    # TODO: iterate over images paths
-        # TODO: load image as a gray level image
-        # TODO: process the image to remove borders and resize
-        # TODO: append extracted features to the a list
-
-    # TODO: return features, and labels
-    return None, None
+    features = []
+    for im_name in im_list:
+        im = np.array( Image.open( im_name ).convert( 'L' ) )
+        im = process_image( im )
+        features.append( extract_features( im ) )
+        
+    return features, labels
