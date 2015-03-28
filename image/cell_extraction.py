@@ -77,7 +77,7 @@ def extract_cells(im):
     for row in range(9):
         for col in range(9):
             crop = im[row*div_x:(row+1)*div_x, col*div_y:(col+1)*div_y]
-            crop = crop[pad_x:(div_x - pad_x), pad_y:(div_y - pad_y)]
+            crop = process_image( crop )
             cells.append(crop)
 
     # Plot the extracted cells
