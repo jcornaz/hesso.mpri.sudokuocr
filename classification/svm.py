@@ -40,7 +40,7 @@ def load_or_train(force_train=False):
         
         # Cross validation
         scores = cross_validation.cross_val_score( clf, features, labels )
-        print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() * 2))
+        print( "Accuracy: %0.2f (+/- %0.2f)" % ( scores.mean(), scores.std() * 2 ) )
 
         # If you want, you can do validation, print classification report and show confusion matrix with this
         # trained classifier. But keep in mind that you will do it on the training set itself!
