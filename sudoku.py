@@ -48,8 +48,6 @@ predicted = clf.predict( features )
 
 # Load solution to compare with, print metrics, and print confusion matrix
 y_sudoku = np.loadtxt(ver_path).reshape(81).astype(int)
-print predicted
-print y_sudoku
 show_confusion_matrix( y_sudoku, predicted, 'Confusion matrix for \'' + im_path + '\'', cm.gray_r)
 print_classification_report( y_sudoku, predicted, 'Classification report for \'' + im_path + '\'')
 
