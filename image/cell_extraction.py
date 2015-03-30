@@ -73,6 +73,7 @@ def extract_cells(im):
     # Iterate and crop the cells
     for row in range(9):
         for col in range(9):
+           #  print str(row) + ',' + str(col) + ':'
             crop = im[row*div_x:(row+1)*div_x, col*div_y:(col+1)*div_y]
             crop = process_image( crop )
             cells.append(crop)
