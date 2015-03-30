@@ -13,9 +13,8 @@ ver_path = './data/sudokus/sudoku{}.sud'.format(sudoku_nb)
 # Get trained classifier
 clf = load_or_train()
 
-# Load sudoku image
 img = load_image( im_path )
-
+    
 # Extract cells
 cells = extract_cells( img )
 
