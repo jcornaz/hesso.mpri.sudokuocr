@@ -69,9 +69,6 @@ def extract_cells(im):
     (dim_x, dim_y) = im.shape
     div_x = int(dim_x / 9)
     div_y = int(dim_y / 9)
-
-    pad_x = div_x / 10
-    pad_y = div_y / 10
     
     # Iterate and crop the cells
     for row in range(9):

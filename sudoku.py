@@ -1,13 +1,12 @@
 from classification.metrics import show_confusion_matrix, print_classification_report
 from classification.svm import load_or_train
-from image.cell_extraction import extract_cells, plot_extracted_cells
-from PIL import Image
+from image.cell_extraction import extract_cells
 import numpy as np
 from image.feature_extraction import extract_features
 from tools import load_image
 
 # Choose a sudoku grid number, and prepare paths (image and verification grid)
-sudoku_nb = 18
+sudoku_nb = 3
 im_path = './data/sudokus/sudoku{}.JPG'.format(sudoku_nb)
 ver_path = './data/sudokus/sudoku{}.sud'.format(sudoku_nb)
 
