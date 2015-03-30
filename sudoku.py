@@ -45,7 +45,7 @@ for cell in cells:
 predicted = clf.predict( features )
 
 # Load solution to compare with, print metrics, and print confusion matrix
-y_sudoku = np.loadtxt(ver_path).reshape(81)
+y_sudoku = np.loadtxt(ver_path).reshape(81).astype(int)
 print_classification_report( y_sudoku, predicted, 'Classification report for \'' + im_path + '\'')
 show_confusion_matrix( y_sudoku, predicted, 'Confusion matrix for \'' + im_path + '\'')
 
