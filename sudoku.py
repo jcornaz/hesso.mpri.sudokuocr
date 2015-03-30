@@ -2,6 +2,8 @@ import numpy as np
 import random as rnd
 import sys
 
+import matplotlib.cm as cm
+
 from classification.metrics import show_confusion_matrix, print_classification_report
 from classification.svm import load_or_train
 from image.cell_extraction import extract_cells
@@ -46,8 +48,10 @@ predicted = clf.predict( features )
 
 # Load solution to compare with, print metrics, and print confusion matrix
 y_sudoku = np.loadtxt(ver_path).reshape(81).astype(int)
+print predicted
+print y_sudoku
+show_confusion_matrix( y_sudoku, predicted, 'Confusion matrix for \'' + im_path + '\'', cm.gray_r)
 print_classification_report( y_sudoku, predicted, 'Classification report for \'' + im_path + '\'')
-show_confusion_matrix( y_sudoku, predicted, 'Confusion matrix for \'' + im_path + '\'')
 
 # Print resulting sudoku
 print 'Predicted sudoku : '

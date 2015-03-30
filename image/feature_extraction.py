@@ -1,6 +1,5 @@
 import numpy as np
-from skimage.filters import median, threshold_otsu, threshold_yen
-from skimage.morphology import disk, erosion
+from skimage.filters import threshold_yen
 
 from tools import list_images, load_image
 from skimage.transform import resize
@@ -22,14 +21,8 @@ def process_image(im, border_size=10, im_size=50):
 
     im = im[border_size:-border_size, border_size:-border_size]
     
-    selem = disk( 1 )
-    
-    im = median( im, selem )
-    
     t = threshold_yen( im )
     im = im > t
-    
-    im = erosion( im, selem )
     
     return resize(im, (im_size, im_size))
 

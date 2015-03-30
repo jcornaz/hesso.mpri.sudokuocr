@@ -2,15 +2,15 @@ from sklearn.metrics.metrics import confusion_matrix, classification_report
 import pylab as pl
 
 
-def show_confusion_matrix(y_true, y_predicted, title=''):
+def show_confusion_matrix(y_true, y_predicted, title='', cmap=None ):
     """
     Plot (and print) a confusion matrix from y_true and y_predicted
     """
-    confmat = confusion_matrix( y_true, y_predicted )
+    confmat = confusion_matrix( y_true, y_predicted)
     pl.figure(figsize=(10, 10))
     
     ax = pl.subplot(111)
-    cmim = ax.matshow( confmat, interpolation='nearest' )
+    cmim = ax.matshow( confmat, interpolation='nearest', cmap=cmap )
     
     for i in xrange(confmat.shape[0]):
         for j in xrange(confmat.shape[1]):
