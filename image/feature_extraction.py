@@ -1,17 +1,18 @@
-from tools import list_images
-import numpy as np
-from PIL import Image
+from tools import list_images, load_image
 from skimage.transform import resize
+from skimage.feature import hog
+import numpy as np
 
+i = 0
 
-def extract_features(im):
+def extract_features( im ):
     """ Returns a feature vector for an image patch. """
+    hist = hog( im, pixels_per_cell=(5,5) )
+    flat = im.flatten
+    return np.appen( hist, flat )
 
-    # TODO: find other features to use
-    return im.flatten()
 
-
-def process_image(im, border_size=5, im_size=50):
+def process_image(im, border_size=10, im_size=50):
     """ Remove borders and resize """
 
     im = im[border_size:-border_size, border_size:-border_size]
@@ -32,7 +33,7 @@ def load_data(path):
     # Create features from the images
     features = []
     for im_name in im_list:
-        im = np.array( Image.open( im_name ).convert( 'L' ) )
+        im = load_image( im_name )
         im = process_image( im )
         features.append( extract_features( im ) )
         
