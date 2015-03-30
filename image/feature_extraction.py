@@ -7,9 +7,7 @@ i = 0
 
 def extract_features( im ):
     """ Returns a feature vector for an image patch. """
-    hist = hog( im, pixels_per_cell=(5,5) )
-    flat = im.flatten
-    return np.appen( hist, flat )
+    return hog( im, orientations=8, pixels_per_cell=(5,5), cells_per_block=(1, 1) )
 
 
 def process_image(im, border_size=10, im_size=50):
