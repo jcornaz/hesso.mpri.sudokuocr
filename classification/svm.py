@@ -44,5 +44,9 @@ def load_or_train(force_train=False):
 
         # If you want, you can do validation, print classification report and show confusion matrix with this
         # trained classifier. But keep in mind that you will do it on the training set itself!
+        predicted = clf.predict( features )
+        title = 'cross validation with training set'
+        show_confusion_matrix( labels, predicted, title )
+        print_classification_report( labels, predicted, title )
 
     return clf

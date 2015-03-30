@@ -19,6 +19,7 @@ def show_confusion_matrix(y_true, y_predicted, title=''):
             verticalalignment='center',
             fontsize=8)
 
+    ax.set_title( title )
     ax.set_xlabel('predicted label')
     ax.set_ylabel('true label')
     pl.colorbar(cmim, shrink=0.7, orientation='horizontal', pad=0.01)
@@ -27,4 +28,5 @@ def print_classification_report(y_true, y_pred, title=''):
     """
     Print a classification report
     """
+    print title
     print classification_report( y_true, y_pred )
