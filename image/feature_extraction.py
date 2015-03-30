@@ -1,6 +1,4 @@
-from tools import list_images
-import numpy as np
-from PIL import Image
+from tools import list_images, load_image
 from skimage.transform import resize
 
 
@@ -32,7 +30,7 @@ def load_data(path):
     # Create features from the images
     features = []
     for im_name in im_list:
-        im = np.array( Image.open( im_name ).convert( 'L' ) )
+        im = load_image( im_name )
         im = process_image( im )
         features.append( extract_features( im ) )
         

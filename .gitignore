@@ -1,6 +1,19 @@
+ # ====== #
+ # Commons #
+ # ====== #
  *.exe
  *.dll
  *.bin
  *.o
 .*
  !.gitignore
+
+# ========= # 
+# Spyder/Python #
+# ========= #
+*.pyc
+
+# ======= #
+# Project data #
+# ======= #
+*.pkl

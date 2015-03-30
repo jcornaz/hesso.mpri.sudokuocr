@@ -8,10 +8,9 @@ from image.feature_extraction import load_data
 def train(clf, X_train, y_train):
     """ Train and return an SVM classifier """
 
-    # TODO: train the classifier
+    clf = clf.fit( X_train, y_train )
 
-    # TODO: return the classifier
-    return None
+    return clf
 
 
 def load_or_train(force_train=False):
@@ -32,17 +31,18 @@ def load_or_train(force_train=False):
         X, y = load_data(data_path)
 
         # Instantiate a classifier
-        # TODO: instantiate a new classifier (choose an adapted kernel!)
-
-        # Cross validation
-        # TODO: do cross-validation and print cross-validation result (mean accuracy +/- standard deviation)
+        clf = svm.SVC( C=100.0, kernel='rbf' )
 
         # Train the classifier on the whole dataset, and save it
-        # TODO: train the classifier on the whole dataset
+        features, labels = load_data( data_path )
+        clf = train( clf, features, labels )
         pickle.dump(clf, open(clf_path, 'wb'))
+        
+        # Cross validation
+        scores = cross_validation.cross_val_score( clf, features, labels )
+        print( "Accuracy: %0.2f (+/- %0.2f)" % ( scores.mean(), scores.std() * 2 ) )
 
         # If you want, you can do validation, print classification report and show confusion matrix with this
         # trained classifier. But keep in mind that you will do it on the training set itself!
 
-    # TODO: return the classifier
-    return None
+    return clf

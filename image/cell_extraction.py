@@ -24,9 +24,7 @@ def transform_from_corners(im):
     # Compute projective transform, and apply it through warping
     tform = tf.ProjectiveTransform()
     tform.estimate(tp, fp)
-    output_shape = (dim, dim)
-    # TODO: use scikit-image warp function to apply the transformation
-    warped = None
+    warped = tf.warp( im, tform, output_shape=(dim, dim) )
 
     # Convert result in the right format [0, 255]
     im = convert(warped, np.uint8)
@@ -71,12 +69,12 @@ def extract_cells(im):
     (dim_x, dim_y) = im.shape
     div_x = int(dim_x / 9)
     div_y = int(dim_y / 9)
-
+    
     # Iterate and crop the cells
     for row in range(9):
         for col in range(9):
             crop = im[row*div_x:(row+1)*div_x, col*div_y:(col+1)*div_y]
-            # TODO: process the image to remove borders and resize
+            crop = process_image( crop )
             cells.append(crop)
 
     # Plot the extracted cells
